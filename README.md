@@ -6,8 +6,6 @@ A docker container build from debian buster.
 
 --> The server is running wordpress, phpmyadmin and mysql.
 
-build (with root):
-``docker build -t <image_name> .``
+build (with root): ``docker build -t <image_name> .``
 
-run (with root):
-``run --name <name> -it -p 80:80 -p 443:443 <image_name>``
+run (with root): ``run --name <name> -it -p 80:80 -p 443:443 <image_name>``
