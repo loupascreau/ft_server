@@ -14,7 +14,7 @@ echo "FLUSH PRIVILEGES;" | mysql -u root --skip-password
 
 if [[ $AUTOINDEX == "off" ]]
 then
-	sed -i 's/autoindex off/autoindex on/' /etc/nginx/sites-available/my_domain
+	sed -i 's/autoindex on/autoindex off/' /etc/nginx/sites-available/my_domain
 fi
 
 service php7.3-fpm start
