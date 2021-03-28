@@ -1,0 +1,38 @@
+server {
+	listen 80;
+	listen [::]:80;
+
+	server_name localhost;
+
+	root /var/www/my_domain/;
+	index index.php index.html;
+
+	return 301 https://$server_name$request_uri;
+}
+
+server {
+	listen 443 ssl;
+	listen [::]:443 ssl;
+
+	server_name localhost;
+
+	ssl_certificate /etc/nginx/ssl/my_domain.pem;
+    ssl_certificate_key /etc/nginx/ssl/my_domain.key;
+
+	root /var/www/my_domain/;
+	index index.htm index.php index.html index.nginx.debian.html;
+
+	location / {
+		autoindex on;
+		try_files $uri $uri/ /index.php?$args;
+	}
+
+	location ~ \.php$ {
+		include snippets/fastcgi-php.conf;
+		fastcgi_pass unix:/run/php/php7.3-fpm.sock;
+	}
+
+	location ~ /\.ht {
+      deny all;
+  }
+}
