@@ -1,6 +1,7 @@
 #!/bin/bash
 
 service mysql start
+service php7.3-fpm start
 
 #config SSL
 mkdir /etc/nginx/ssl
@@ -14,9 +15,8 @@ echo "FLUSH PRIVILEGES;" | mysql -u root --skip-password
 
 if [[ $AUTOINDEX == "off" ]]
 then
-	sed -i 's/autoindex on/autoindex off/' /etc/nginx/sites-available/my_domain
+	sed -i 's/autoindex on/autoindex off/g' /etc/nginx/sites-available/my_domain
 fi
 
-service php7.3-fpm start
 service nginx start
 bash
