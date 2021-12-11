@@ -15,4 +15,5 @@ run (AUTOINDEX=off):	``docker run --name <name> --env AUTOINDEX=off -it -p 80:80
 If you want get into the image container running :
 
 --> ``docker exec -it <mycontainer> bash``
+
 you can find your docker running id with --> ``docker ps``
